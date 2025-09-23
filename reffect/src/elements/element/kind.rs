@@ -54,23 +54,23 @@ impl ElementType {
         }
     }
 
-    pub fn render_options(&mut self, ui: &Ui, ctx: &RenderCtx) {
+    pub fn render_options(&mut self, ui: &Ui, ctx: &RenderCtx, common: &Common) {
         match self {
             Self::Group(group) => group.render_options(ui, ctx),
             Self::Icon(icon) => icon.render_options(ui, ctx),
             Self::IconList(list) => list.render_options(ui, ctx),
             Self::Text(text) => text.render_options(ui, ctx),
-            Self::Bar(bar) => bar.render_options(ui, ctx),
+            Self::Bar(bar) => bar.render_options(ui, ctx, common),
         }
     }
 
-    pub fn render_tabs(&mut self, ui: &Ui, ctx: &RenderCtx) {
+    pub fn render_tabs(&mut self, ui: &Ui, ctx: &RenderCtx, common: &Common) {
         match self {
             Self::Group(group) => group.render_tabs(ui, ctx),
-            Self::Icon(icon) => icon.render_tabs(ui, ctx),
-            Self::IconList(list) => list.render_tabs(ui, ctx),
-            Self::Text(text) => text.render_tabs(ui, ctx),
-            Self::Bar(bar) => bar.render_tabs(ui, ctx),
+            Self::Icon(icon) => icon.render_tabs(ui, ctx, common),
+            Self::IconList(list) => list.render_tabs(ui, ctx, common),
+            Self::Text(text) => text.render_tabs(ui, ctx, common),
+            Self::Bar(bar) => bar.render_tabs(ui, ctx, common),
         }
     }
 
@@ -81,13 +81,13 @@ impl ElementType {
         }
     }
 
-    pub fn render_debug(&mut self, ui: &Ui, ctx: &RenderCtx) {
+    pub fn render_debug(&mut self, ui: &Ui, ctx: &RenderCtx, common: &Common) {
         match self {
             Self::Group(group) => group.render_debug(ui, ctx),
             Self::Icon(icon) => icon.render_debug(ui, ctx),
             Self::IconList(list) => list.render_debug(ui, ctx),
             Self::Text(text) => text.render_debug(ui, ctx),
-            Self::Bar(bar) => bar.render_debug(ui, ctx),
+            Self::Bar(bar) => bar.render_debug(ui, ctx, common),
         }
     }
 }

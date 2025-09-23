@@ -31,11 +31,11 @@ where
         }
     }
 
-    pub fn render_options(&mut self, ui: &Ui, ctx: &Context, base: &T)
+    pub fn render_options(&mut self, ui: &Ui, ctx: &Context, active: &ProgressActive, base: &T)
     where
         T::Partial: PartialProps<T>,
     {
-        self.trigger.render_options(ui, ctx);
+        self.trigger.render_options(ui, ctx, active);
         ui.spacing();
         self.properties.render_options(ui, base);
         ui.spacing();

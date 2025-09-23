@@ -61,7 +61,12 @@ where
     T: Clone + IntoPartial + 'static,
     T::Partial: fmt::Debug + Clone + Serialize + for<'d> Deserialize<'d> + PartialProps<T>,
 {
-    pub fn render_condition_options(&mut self, ui: &Ui, ctx: &Context) -> DynAction<Self> {
+    pub fn render_condition_options(
+        &mut self,
+        ui: &Ui,
+        ctx: &Context,
+        active: Option<&ProgressActive>,
+    ) -> DynAction<Self> {
         let mut copy_action = DynAction::<Self>::empty();
         let mut action = Action::new();
 
@@ -114,7 +119,7 @@ where
             }
 
             if open {
-                condition.render_options(ui, ctx, &self.base);
+                condition.render_options(ui, ctx, active.as_ref().unwrap(), &self.base);
             }
         }
         action.perform(&mut self.conditions);

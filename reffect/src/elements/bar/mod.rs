@@ -121,7 +121,7 @@ impl Bar {
         }
     }
 
-    pub fn render_options(&mut self, ui: &Ui, _ctx: &Context) {
+    pub fn render_options(&mut self, ui: &Ui, _ctx: &Context, _common: &Common) {
         enum_combo(
             ui,
             "Progress",
@@ -225,13 +225,14 @@ impl Bar {
         }
     }
 
-    pub fn render_tabs(&mut self, ui: &Ui, ctx: &Context) {
+    pub fn render_tabs(&mut self, ui: &Ui, ctx: &Context, common: &Common) {
         if let Some(_token) = ui.tab_item("Condition") {
-            self.props.render_condition_options(ui, ctx);
+            let active = common.trigger.active();
+            self.props.render_condition_options(ui, ctx, active);
         }
     }
 
-    pub fn render_debug(&mut self, ui: &Ui, _ctx: &Context) {
+    pub fn render_debug(&mut self, ui: &Ui, _ctx: &Context, _common: &Common) {
         ui.text(format!(
             "Progress scale: {}",
             self.props.upper_bound - self.props.lower_bound

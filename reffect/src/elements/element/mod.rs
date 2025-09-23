@@ -150,10 +150,10 @@ impl Element {
             if let Some(_token) = ui.tab_item(&self.kind) {
                 self.common.render_options(ui, ctx);
                 ui.spacing();
-                self.kind.render_options(ui, ctx);
+                self.kind.render_options(ui, ctx, &self.common);
             }
 
-            self.kind.render_tabs(ui, ctx);
+            self.kind.render_tabs(ui, ctx, &self.common);
 
             if let Some(_token) = ui.tab_item("Filter") {
                 self.common.render_filters(ui, ctx);
@@ -166,7 +166,7 @@ impl Element {
 
             if let Some(_token) = ui.tab_item("?") {
                 self.common.render_debug(ui, ctx);
-                self.kind.render_debug(ui, ctx);
+                self.kind.render_debug(ui, ctx, &self.common);
             }
         }
     }
